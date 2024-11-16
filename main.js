@@ -46,7 +46,7 @@ const countdownInterval = setInterval(updateCountdown, 1000);
 updateCountdown();
 updateTimeandDate();
 
-function redirectToGithub() {
-  const url = 'https://github.com/DaveSummer36/civilwars';
+function redirectToSite() {
+  const url = 'https://davesummer36.github.io/civilwars-test/';
   window.open(url, '_blank');
 }
