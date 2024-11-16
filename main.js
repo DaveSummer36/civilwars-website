@@ -14,6 +14,8 @@ function updateTimeandDate() {
 
 setInterval(updateTimeandDate, 1000);
 
+updateTimeandDate();
+
 function redirectToGithub() {
   const url = 'https://github.com/DaveSummer36/civilwars';
   window.open(url, '_blank');
