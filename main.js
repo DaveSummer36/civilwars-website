@@ -1,21 +1,19 @@
-function formatTime(date) {
-  return date.toLocaleTimeString('hu-HU', { hour12: false });
-}
-
 function formatDate(date) {
   return date.toLocaleString('hu-HU');
 }
 
-let timerElement = document.getElementById('currentTime');
 let dateElement = document.getElementById('currentDate');
+let countdownElement = document.getElementById('releaseDateCountDown');
 
 function updateTimeandDate() {
+  const releaseDate = new Date('2026-08-26T12:00:00');
   const now = new Date();
+  const timeDifference = releaseDate - now;
 
-  if(timerElement) {
-    timerElement.textContent = formatTime(now);
-  } else {
-    console.error('timerElement isn\'t defined.');
+  if(timeDifference <= 0) {
+    countdownElement.textContent = 'The release time is arrived';
+    clearInterval(countdownInterval);
+    return;
   }
 
   if(dateElement) {
@@ -23,10 +21,25 @@ function updateTimeandDate() {
   } else {
     console.error('dateElement isn\'t defined.');
   }
+
+  const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+  let milliseconds = '';
+  if(days <= 31) {
+    const ms = timeDifference % 1000;
+    milliseconds = `, ${ms} milliseconds`;
+  }
+
+  countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${milliseconds}`;
 }
 
 setInterval(updateTimeandDate, 1000);
+const countdownInterval = setInterval(updateCountdown, 1000);
 
+updateCountdown();
 updateTimeandDate();
 
 function redirectToGithub() {
