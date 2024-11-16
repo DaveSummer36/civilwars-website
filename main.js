@@ -6,10 +6,23 @@ function formatDate(date) {
   return date.toLocaleString('hu-HU');
 }
 
+let timerElement = document.getElementyById('currentTime');
+let dateElement = document.getElementyById('currentDate');
+
 function updateTimeandDate() {
   const now = new Date();
-  document.getElementyById('currentTime').textContent = formatTime(now);
-  document.getElementyById('currentDate').textContent = formatDate(now);
+
+  if(timerElement) {
+    timerElement.textContent = formatTime(now);
+  } else {
+    console.error('timerElement isn\'t defined.');
+  }
+
+  if(dateElement) {
+    dateElement.textContent = formatDate(now);
+  } else {
+    console.error('dateElement isn\'t defined.');
+  }
 }
 
 setInterval(updateTimeandDate, 1000);
