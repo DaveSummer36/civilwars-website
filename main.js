@@ -33,7 +33,7 @@ function updateTimeandDate() {
     milliseconds = `, ${ms} milliseconds`;
   }
 
-  countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${milliseconds}`;
+  countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds, ${milliseconds}`;
 }
 
 setInterval(updateTimeandDate, 1000);
