@@ -6,8 +6,8 @@ function formatDate(date) {
   return date.toLocaleString('hu-HU');
 }
 
-let timerElement = document.getElementyById('currentTime');
-let dateElement = document.getElementyById('currentDate');
+let timerElement = document.getElementById('currentTime');
+let dateElement = document.getElementById('currentDate');
 
 function updateTimeandDate() {
   const now = new Date();
